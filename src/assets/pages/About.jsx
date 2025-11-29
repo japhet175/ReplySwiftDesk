@@ -1,9 +1,36 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 export default function About() {
   const { t } = useTranslation();
+  const [status, setStatus] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // empêche le rechargement
+    setStatus("loading");
+
+    const formData = new FormData(e.target);
+
+    try {
+      const res = await fetch("https://formspree.io/f/xjkvkrlk", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        e.target.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("network-error");
+    }
+  };
 
   return (
     <main className="pt-28 pb-20 bg-[#1B1F24] text-[#C0C0C0] min-h-screen w-full">
@@ -97,31 +124,49 @@ export default function About() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="mt-20 px-6 max-w-3xl mx-auto text-center bg-[#161A20] border border-[#007BFF]/40 rounded-2xl p-8 shadow-2xl">
-        <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-[#00AEEF]">
-          {t("newsletter.title")}
+      {/* Services Highlights Section */}
+      <section className="mt-20 px-6 max-w-5xl mx-auto text-center bg-[#161A20] border border-[#007BFF]/40 rounded-2xl p-8 shadow-2xl">
+        <h2 className="text-2xl sm:text-3xl font-semibold mb-8 text-[#00AEEF]">
+          {t("servicesHighlights.title", "Our Top Services")}
         </h2>
-        <p className="text-[#C0C0C0] mb-6">{t("newsletter.description")}</p>
-        <form
-          action="https://formspree.io/f/xjkvkrlk"
-          method="POST"
-          className="flex flex-col sm:flex-row items-center gap-4 justify-center"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="bg-[#1F2328] p-6 rounded-xl shadow-md">
+            <h3 className="text-xl font-semibold mb-2">Digital Marketing</h3>
+            <p className="text-[#C0C0C0] text-sm">
+              Boost your online presence with tailored strategies and data-driven campaigns.
+            </p>
+          </div>
+          <div className="bg-[#1F2328] p-6 rounded-xl shadow-md">
+            <h3 className="text-xl font-semibold mb-2">Email Marketing</h3>
+            <p className="text-[#C0C0C0] text-sm">
+              Reach your audience effectively with personalized email campaigns that convert.
+            </p>
+          </div>
+          <div className="bg-[#1F2328] p-6 rounded-xl shadow-md">
+            <h3 className="text-xl font-semibold mb-2">Redesign & Redevelopment</h3>
+            <p className="text-[#C0C0C0] text-sm">
+              Modernize your website with a fresh design and optimized functionality.
+            </p>
+          </div>
+          <div className="bg-[#1F2328] p-6 rounded-xl shadow-md">
+            <h3 className="text-xl font-semibold mb-2">Virtual Assistants</h3>
+            <p className="text-[#C0C0C0] text-sm">
+              Get support for your business tasks with skilled virtual assistants.
+            </p>
+          </div>
+          <div className="bg-[#1F2328] p-6 rounded-xl shadow-md">
+            <h3 className="text-xl font-semibold mb-2">Social Media Management</h3>
+            <p className="text-[#C0C0C0] text-sm">
+              Grow and engage your audience across major social platforms.
+            </p>
+          </div>
+        </div>
+        <Link
+          to="/services"
+          className="mt-6 inline-block px-8 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-[#007BFF] to-[#00AEEF] hover:opacity-90 transition"
         >
-          <input
-            type="email"
-            name="email"
-            placeholder={t("newsletter.placeholder")}
-            className="w-full sm:w-2/3 p-3 rounded-lg border border-[#007BFF]/40 bg-[#0f1114] text-[#C0C0C0] focus:outline-none focus:ring-2 focus:ring-[#00AEEF]"
-            required
-          />
-          <button
-            type="submit"
-            className="px-6 py-3 w-full sm:w-auto rounded-lg font-semibold text-white bg-gradient-to-r from-[#007BFF] to-[#00AEEF] hover:opacity-90 transition"
-          >
-            {t("newsletter.button")}
-          </button>
-        </form>
+          {t("servicesHighlights.button", "Explore All Services")}
+        </Link>
       </section>
     </main>
   );

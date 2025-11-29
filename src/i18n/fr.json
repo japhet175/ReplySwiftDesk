@@ -12,9 +12,9 @@
     "description": "Nous aidons les marques ambitieuses à croître et à dominer leur marché."
   },
   "cta": {
-    "exploreServices": "Découvrir les services",
-    "getInTouch": "Nous contacter",
-    "exploreServicesDescription": "Découvrez comment nos services peuvent booster votre activité."
+    "exploreServices": "Découvrir tous les services",
+    "exploreServicesDescription": "Découvrez comment nos services peuvent booster votre activité.",
+    "getInTouch": "Nous contacter"
   },
   "marketingTeam": {
     "title": "Rencontrez notre équipe marketing",
@@ -31,38 +31,38 @@
     "satisfiedClients": "Clients satisfaits",
     "projectsCompleted": "Projets réalisés"
   },
-  "newsletter": {
-    "title": "Abonnez-vous à notre newsletter",
-    "description": "Recevez nos dernières actualités, campagnes et offres exclusives.",
-    "placeholder": "Entrez votre e-mail",
-    "button": "S’abonner",
-    "successMessage": "Merci pour votre inscription !"
-  },
   "services": {
     "redesign": {
-      "title": "Refonte et développement",
-      "desc": "Sites web et applications modernes et responsives pour faire croître votre activité."
+      "title": "Refonte & Développement",
+      "desc": "Modernisez votre site web avec un design frais et des fonctionnalités optimisées."
     },
     "email": {
       "title": "Email Marketing",
-      "desc": "Campagnes ciblées pour booster vos ventes et fidéliser vos clients."
+      "desc": "Touchez votre audience efficacement avec des campagnes d'email personnalisées qui convertissent."
     },
     "digital": {
       "title": "Marketing digital",
-      "desc": "Stratégies complètes pour le SEO, la publicité et la croissance en ligne."
+      "desc": "Boostez votre présence en ligne avec des stratégies sur mesure et des campagnes basées sur les données."
     },
     "social": {
       "title": "Gestion des réseaux sociaux",
-      "desc": "Gérez vos réseaux sociaux et engagez votre audience efficacement."
+      "desc": "Développez et engagez votre audience sur les principales plateformes sociales."
     },
     "support": {
-      "title": "Service client",
-      "desc": "Des solutions efficaces pour offrir une assistance client de qualité."
+      "title": "Support client",
+      "desc": "Des solutions de service client efficaces pour satisfaire vos clients."
     },
     "virtual": {
       "title": "Assistant virtuel",
-      "desc": "Assistance professionnelle pour vos tâches administratives et opérations."
+      "desc": "Bénéficiez d’une assistance professionnelle pour vos tâches administratives et opérations."
     }
+  },
+  "newsletter": {
+    "title": "Abonnez-vous à notre newsletter",
+    "description": "Restez informé de nos dernières campagnes et offres.",
+    "placeholder": "Entrez votre email",
+    "button": "S'abonner",
+    "successMessage": "Merci pour votre abonnement !"
   },
   "careers": {
     "back": "Retour à l’accueil",
@@ -77,7 +77,7 @@
     "socialMedia": "Réseaux sociaux",
     "customerSupport": "Support client",
     "virtualAssistant": "Assistant virtuel",
-    "redesign": "Refonte et développement",
+    "redesign": "Refonte & Développement",
     "other": "Autre",
     "hearAbout": "Comment avez-vous entendu parler de nous ?",
     "google": "Google",
@@ -111,40 +111,39 @@
       "socialMedia": "Réseaux sociaux",
       "customerSupport": "Support client",
       "virtualAssistance": "Assistance virtuelle",
-      "websiteDev": "Refonte et développement",
+      "websiteDev": "Refonte & Développement",
       "other": "Autre"
     }
   },
- "about": {
-  "back": "Retour à l'accueil",
-  "title": "À propos de ReplySwiftDesk",
-  "description1": "ReplySwiftDesk est une agence de marketing digital et d'assistance virtuelle basée à Kigali, aidant les entreprises à se développer en ligne.",
-  "description2": "Nous combinons créativité, stratégies basées sur les données et automatisation pour offrir des résultats exceptionnels à nos clients.",
-  "whyTitle": "Pourquoi nous choisir",
-  "whyDescription": "Nous fournissons des solutions marketing rapides et personnalisées, adaptées à vos objectifs, avec une touche humaine et une technologie moderne.",
-  "howTitle": "Comment ça fonctionne",
-  "howDescription1": "Notre processus commence par comprendre vos besoins et concevoir le plan adapté pour atteindre votre croissance.",
-  "howDescription2": "Prêt à passer à l’étape suivante ? Contactez notre équipe dès aujourd'hui via",
-  "contactLink": "notre page de contact",
-  "faqTitle": "Questions Fréquemment Posées",
-  "faqItems": [
-    {
-      "question": "Pourquoi devrais-je investir dans le marketing digital aujourd'hui à Kigali et quels autres services pouvez-vous offrir pour faire croître mon entreprise ?",
-      "answer": "Investir dans le marketing digital aujourd'hui est essentiel pour rester compétitif sur le marché en pleine croissance de Kigali. Avec la bonne stratégie, votre entreprise peut toucher le bon public, augmenter sa visibilité, générer plus de prospects et accroître ses ventes plus rapidement que par les méthodes traditionnelles. Chez ReplySwiftDesk, nous ne nous contentons pas de lancer des campagnes — nous créons des solutions sur mesure combinant marketing digital, gestion des réseaux sociaux, refonte de site web, campagnes d'emailing et services d'assistant virtuel. Notre objectif est de faire croître votre entreprise efficacement et durablement tout en fournissant des résultats mesurables qui font réellement la différence."
-    },
-    {
-      "question": "Quels services proposez-vous ?",
-      "answer": "Nous offrons un ensemble complet de services conçus pour accélérer la croissance de votre entreprise. Cela comprend des stratégies de marketing digital, la gestion des réseaux sociaux, la refonte de sites web, des campagnes d'emailing et des services d'assistant virtuel. Chaque service est personnalisé pour répondre à vos besoins spécifiques, garantissant un impact maximal et des résultats mesurables."
-    },
-    {
-      "question": "Où êtes-vous situés ?",
-      "answer": "Nous sommes basés à Kigali, Rwanda, mais nos services s'étendent à l’international. Grâce à la collaboration à distance et aux outils numériques modernes, nous offrons des solutions marketing de haute qualité à des clients partout dans le monde, sans compromettre l’efficacité ou les résultats."
-    },
-    {
-      "question": "Comment puis-je commencer à travailler avec vous ?",
-      "answer": "Commencer est simple. Contactez-nous via notre page de contact et nous planifierons une consultation rapide pour comprendre vos besoins, objectifs et défis. À partir de là, nous élaborons un plan sur mesure conçu pour fournir des résultats rapides, mesurables et durables."
-    }
-  ]
-}
-
+  "about": {
+    "back": "Retour à l'accueil",
+    "title": "À propos de ReplySwiftDesk",
+    "description1": "ReplySwiftDesk est une agence de marketing digital et d'assistance virtuelle basée à Kigali, aidant les entreprises à se développer en ligne.",
+    "description2": "Nous combinons créativité, stratégies basées sur les données et automatisation pour offrir des résultats exceptionnels à nos clients.",
+    "whyTitle": "Pourquoi nous choisir",
+    "whyDescription": "Nous fournissons des solutions marketing rapides et personnalisées, adaptées à vos objectifs, avec une touche humaine et une technologie moderne.",
+    "howTitle": "Comment ça fonctionne",
+    "howDescription1": "Notre processus commence par comprendre vos besoins et concevoir le plan adapté pour atteindre votre croissance.",
+    "howDescription2": "Prêt à passer à l’étape suivante ? Contactez notre équipe dès aujourd'hui via",
+    "contactLink": "notre page de contact",
+    "faqTitle": "Questions fréquemment posées",
+    "faqItems": [
+      {
+        "question": "Pourquoi devrais-je investir dans le marketing digital aujourd'hui à Kigali et quels autres services pouvez-vous offrir pour faire croître mon entreprise ?",
+        "answer": "Investir dans le marketing digital est essentiel pour rester compétitif sur le marché de Kigali. Avec la bonne stratégie, votre entreprise peut toucher le bon public, augmenter sa visibilité, générer plus de prospects et accroître ses ventes rapidement. Chez ReplySwiftDesk, nous combinons marketing digital, gestion des réseaux sociaux, refonte de site web, campagnes d'emailing et services d'assistant virtuel."
+      },
+      {
+        "question": "Quels services proposez-vous ?",
+        "answer": "Nous offrons des services personnalisés pour accélérer la croissance de votre entreprise : marketing digital, gestion des réseaux sociaux, refonte de sites web, campagnes d'emailing et assistance virtuelle."
+      },
+      {
+        "question": "Où êtes-vous situés ?",
+        "answer": "Nous sommes basés à Kigali, Rwanda, mais nos services s'étendent à l’international grâce à la collaboration à distance et aux outils numériques modernes."
+      },
+      {
+        "question": "Comment puis-je commencer à travailler avec vous ?",
+        "answer": "Contactez-nous via notre page de contact pour une consultation rapide. Nous élaborons ensuite un plan sur mesure pour fournir des résultats rapides, mesurables et durables."
+      }
+    ]
+  }
 }

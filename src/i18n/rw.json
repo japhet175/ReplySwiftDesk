@@ -7,14 +7,14 @@
     "careers": "Imirimo"
   },
   "hero": {
-    "title": "Tera Imbere Ubucuruzi Bwawe na ReplySwiftDesk",
+    "title": "Tera imbere ubucuruzi bwawe na ReplySwiftDesk",
     "subtitle": "Marketing kuri murandasi, ibikorwa by’ubuhanzi, n’ubufasha bwa kure.",
     "description": "Dufasha ibigo bigamije iterambere kugera ku ntsinzi no gutegeka isoko ryabyo."
   },
   "cta": {
-    "exploreServices": "Reba Serivisi",
-    "getInTouch": "Twandikire",
-    "exploreServicesDescription": "Sobanukirwa uburyo serivisi zacu zishobora gufasha ubucuruzi bwawe gukura."
+    "exploreServices": "Reba Serivisi Zose",
+    "exploreServicesDescription": "Sobanukirwa uburyo serivisi zacu zishobora gufasha ubucuruzi bwawe gukura.",
+    "getInTouch": "Twandikire"
   },
   "marketingTeam": {
     "title": "Menya Itsinda Ryacu rya Marketing",
@@ -31,38 +31,38 @@
     "satisfiedClients": "Abakiriya Banyuzwe",
     "projectsCompleted": "Imishinga Irangiye"
   },
+  "services": {
+    "redesign": {
+      "title": "Gusubiramo no Kunoza",
+      "desc": "Kunoza imbuga zawe za internet hamwe n’umurongo mushya n’imikorere igezweho."
+    },
+    "email": {
+      "title": "Marketing ya Email",
+      "desc": "Shyikiriza abakiriya bawe neza n’ubutumwa bwihariye bukora neza."
+    },
+    "digital": {
+      "title": "Marketing Digital",
+      "desc": "Kongera kugaragara kuri murandasi ukoresheje gahunda zihariye zishingiye ku mibare."
+    },
+    "social": {
+      "title": "Gucunga Imbuga Nkora",
+      "desc": "Shyigikira abakiriya bawe kandi wongere uruhare rwabo ku mbuga nkoranyambaga."
+    },
+    "support": {
+      "title": "Serivisi z’Abakiriya",
+      "desc": "Ibisubizo byihuse kandi byiza byo guha abakiriya ibyishimo."
+    },
+    "virtual": {
+      "title": "Ubufasha Bw’Akazi ka Kure",
+      "desc": "Ubufasha bw’umwuga mu bikorwa bya buri munsi no mu mirimo y’ofisi."
+    }
+  },
   "newsletter": {
     "title": "Iyandikishe kuri Newsletter",
     "description": "Komeza umenye amakuru n’ibikorwa bishya bya ReplySwiftDesk.",
     "placeholder": "Andika imeri yawe",
     "button": "Iyandikishe",
     "successMessage": "Murakoze kwiyandikisha!"
-  },
-  "services": {
-    "redesign": {
-      "title": "Gusubiramo no Kunoza",
-      "desc": "Imbuga za murandasi n’amakuru agezweho yo gufasha ubucuruzi bwawe gukura."
-    },
-    "email": {
-      "title": "Marketing ya Email",
-      "desc": "Ibikorwa byateguwe neza byo kongera kugurisha no gufata abakiriya neza."
-    },
-    "digital": {
-      "title": "Marketing Digital",
-      "desc": "Uburyo bwimbitse bwo guteza imbere ishusho yawe kuri murandasi."
-    },
-    "social": {
-      "title": "Gucunga Imbuga Nkora",
-      "desc": "Gucunga no guteza imbere imbuga nkoranyambaga kugira ngo abakiriya bagufatanye."
-    },
-    "support": {
-      "title": "Serivisi z’Abakiriya",
-      "desc": "Serivisi zihuse kandi zinoze zigamije kunyura abakiriya."
-    },
-    "virtual": {
-      "title": "Ubufasha Bw’Akazi ka Kure",
-      "desc": "Ubufasha bw’umwuga mu bikorwa bya buri munsi no mu mirimo y’ofisi."
-    }
   },
   "careers": {
     "back": "Garuka ku Ahabanza",
@@ -116,35 +116,34 @@
     }
   },
   "about": {
-  "back": "Subira ku muryango",
-  "title": "Ibyerekeye ReplySwiftDesk",
-  "description1": "ReplySwiftDesk ni sosiyete yo kwamamaza kuri internet n’ubufasha bw’abakozi b’ikorana n’ikoranabuhanga ikorera i Kigali, ifasha ibigo gukura ku murongo.",
-  "description2": "Twihuza udushya, uburyo bwo gukoresha imibare n’ikoranabuhanga kugira ngo duhe abakiriya bacu ibisubizo byiza cyane.",
-  "whyTitle": "Kuki wahitamo twe",
-  "whyDescription": "Dutanga ibisubizo byihuse kandi byihariye mu kwamamaza, bijyanye n’intego zawe, bifite ubuhanga bw’umuntu n’ikoranabuhanga rigezweho.",
-  "howTitle": "Uko bikora",
-  "howDescription1": "Uburyo dukoresha butangira no kumenya ibyo ukeneye, tukagena gahunda iboneye yo kugera ku ntego zawe.",
-  "howDescription2": "Witeguye gutera intambwe ikurikira? Vugana n’ikipe yacu uyu munsi binyuze kuri",
-  "contactLink": "urupapuro rwacu rwo guhamagara",
-  "faqTitle": "Ibibazo Bikunze Kubazwa",
-  "faqItems": [
-    {
-      "question": "Ni iki gituma nashora mu kwamamaza kuri internet uyu munsi i Kigali kandi ni izihe serivisi zindi mushobora gutanga kugira ngo ubucuruzi bwanjye bukure?",
-      "answer": "Kushora mu kwamamaza kuri internet uyu munsi ni ingenzi kugira ngo ugume imbere y’abahatana ku isoko riri gukura i Kigali. Hamwe na gahunda iboneye, ubucuruzi bwawe bushobora kugera ku bantu baboneye, kongera kumenyekana kw’ikirango, kubona abakiriya benshi, no kuzamura ubucuruzi bwihuse kuruta uburyo busanzwe. Muri ReplySwiftDesk, ntidukora gusa ubukangurambaga — dutanga ibisubizo byihariye bihuriza hamwe kwamamaza kuri internet, imiyoborere y’imbuga nkoranyambaga, gusana imbuga za internet, ubukangurambaga bwo kohereza emails, n’ubufasha bw’abakozi b’ikoranabuhanga. Intego yacu ni ukugira ngo ubucuruzi bwawe bukure neza kandi burambye, twizeye ko ibisubizo bifatika bizagaragara."
-    },
-    {
-      "question": "Ni izihe serivisi mutanga?",
-      "answer": "Dutanga serivisi zose zifasha ubucuruzi bwawe gukura vuba. Harimo gahunda zo kwamamaza kuri internet, imiyoborere y’imbuga nkoranyambaga, gusana no kongera imiterere y’imbuga za internet, ubukangurambaga bwo kohereza emails, ndetse n’ubufasha bw’abakozi b’ikoranabuhanga. Buri serivisi igenewe guhaza ibyo ukeneye ku buryo bwihariye kugira ngo igire ingaruka nziza kandi itange ibisubizo bifatika."
-    },
-    {
-      "question": "Muri he?",
-      "answer": "Dukorera i Kigali, mu Rwanda, ariko serivisi zacu zigezweho ku isi hose. Tubikesha gukorana hifashishijwe ikoranabuhanga n’imiyoboro igezweho, dutanga ibisubizo byiza ku bakiriya hose ku isi, nta kugabanya ubuziranenge cyangwa umusaruro."
-    },
-    {
-      "question": "Natangira nte gukorana namwe?",
-      "answer": "Biroroshye gutangira. Vugana natwe binyuze ku rupapuro rwacu rwo guhamagara, tuzakora inama ngufi yo kumenya ibyo ukeneye, intego zawe n’imbogamizi. Hanyuma, tuzakora gahunda yihariye igamije gutanga ibisubizo byihuse, bifatika kandi birambye."
-    }
-  ]
-}
-
+    "back": "Subira ku muryango",
+    "title": "Ibyerekeye ReplySwiftDesk",
+    "description1": "ReplySwiftDesk ni sosiyete yo kwamamaza kuri internet n’ubufasha bw’abakozi b’ikorana n’ikoranabuhanga ikorera i Kigali, ifasha ibigo gukura ku murongo.",
+    "description2": "Twihuza udushya, uburyo bwo gukoresha imibare n’ikoranabuhanga kugira ngo duhe abakiriya bacu ibisubizo byiza cyane.",
+    "whyTitle": "Kuki wahitamo twe",
+    "whyDescription": "Dutanga ibisubizo byihuse kandi byihariye mu kwamamaza, bijyanye n’intego zawe, bifite ubuhanga bw’umuntu n’ikoranabuhanga rigezweho.",
+    "howTitle": "Uko bikora",
+    "howDescription1": "Uburyo dukoresha butangira no kumenya ibyo ukeneye, tukagena gahunda iboneye yo kugera ku ntego zawe.",
+    "howDescription2": "Witeguye gutera intambwe ikurikira? Vugana n’ikipe yacu uyu munsi binyuze kuri",
+    "contactLink": "urupapuro rwacu rwo guhamagara",
+    "faqTitle": "Ibibazo Bikunze Kubazwa",
+    "faqItems": [
+      {
+        "question": "Ni iki gituma nashora mu kwamamaza kuri internet uyu munsi i Kigali kandi ni izihe serivisi zindi mushobora gutanga kugira ngo ubucuruzi bwanjye bukure?",
+        "answer": "Kushora mu kwamamaza kuri internet uyu munsi ni ingenzi kugira ngo ugume imbere y’abahatana ku isoko riri gukura i Kigali. Hamwe na gahunda iboneye, ubucuruzi bwawe bushobora kugera ku bantu baboneye, kongera kumenyekana kw’ikirango, kubona abakiriya benshi, no kuzamura ubucuruzi bwihuse kuruta uburyo busanzwe. Muri ReplySwiftDesk, ntidukora gusa ubukangurambaga — dutanga ibisubizo byihariye bihuriza hamwe kwamamaza kuri internet, imiyoborere y’imbuga nkoranyambaga, gusana imbuga za internet, ubukangurambaga bwo kohereza emails, n’ubufasha bw’abakozi b’ikoranabuhanga."
+      },
+      {
+        "question": "Ni izihe serivisi mutanga?",
+        "answer": "Dutanga serivisi zose zifasha ubucuruzi bwawe gukura vuba: gahunda zo kwamamaza kuri internet, imiyoborere y’imbuga nkoranyambaga, gusana no kongera imiterere y’imbuga za internet, ubukangurambaga bwo kohereza emails, ndetse n’ubufasha bw’abakozi b’ikoranabuhanga."
+      },
+      {
+        "question": "Muri he?",
+        "answer": "Dukorera i Kigali, mu Rwanda, ariko serivisi zacu zigezweho ku isi hose tubikesha gukorana hifashishijwe ikoranabuhanga n’imiyoboro igezweho."
+      },
+      {
+        "question": "Natangira nte gukorana namwe?",
+        "answer": "Biroroshye gutangira. Vugana natwe binyuze ku rupapuro rwacu rwo guhamagara, tuzakora inama ngufi yo kumenya ibyo ukeneye, intego zawe n’imbogamizi. Hanyuma, tuzakora gahunda yihariye igamije gutanga ibisubizo byihuse, bifatika kandi birambye."
+      }
+    ]
+  }
 }

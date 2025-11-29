@@ -146,33 +146,6 @@ export default function Careers() {
           )}
         </form>
       </div>
-
-      {/* Newsletter Section */}
-      <section className="max-w-3xl mx-auto text-center bg-[#1B1F24] border border-[#007BFF]/40 rounded-2xl p-8 shadow-2xl">
-        <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-[#00AEEF]">
-          {t("newsletter.title")}
-        </h2>
-        <p className="text-[#C0C0C0] mb-6">{t("newsletter.description")}</p>
-        <form
-          action="https://formspree.io/f/xjkvkrlk"
-          method="POST"
-          className="flex flex-col sm:flex-row items-center gap-4 justify-center"
-        >
-          <input
-            type="email"
-            name="email"
-            placeholder={t("newsletter.placeholder")}
-            className="w-full sm:w-2/3 p-3 rounded-lg border border-[#007BFF]/40 bg-[#0f1114] text-[#C0C0C0] focus:outline-none focus:ring-2 focus:ring-[#00AEEF]"
-            required
-          />
-          <button
-            type="submit"
-            className="px-6 py-3 w-full sm:w-auto rounded-lg font-semibold text-white bg-gradient-to-r from-[#007BFF] to-[#00AEEF] hover:opacity-90 transition"
-          >
-            {t("newsletter.button")}
-          </button>
-        </form>
-      </section>
     </main>
   );
 }
