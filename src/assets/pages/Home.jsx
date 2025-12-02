@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import marketingTeam from "../images/marketingTeam.jpg";
 import digitalTeam from "../images/digitalTeam.jpg";
+import { Helmet } from "react-helmet";
 
 export default function Home() {
   const { t } = useTranslation();
@@ -35,6 +36,16 @@ export default function Home() {
   };
 
   return (
+    <>
+     <Helmet>
+        <title>Home - ReplySwiftDesk</title>
+        <meta
+          name="description"
+          content="Welcome to ReplySwiftDesk, your trusted partner for digital marketing, website redesign, social media management, and virtual assistance."
+        />
+      </Helmet>
+
+      <h1 className="sr-only">Home - ReplySwiftDesk</h1>
     <main className="pt-28 bg-[#1B1F24] text-[#C0C0C0] min-h-screen">
 
       {/* HERO Section */}
@@ -176,5 +187,6 @@ export default function Home() {
         {subscribed && <p className="text-green-400 mt-4">{t('newsletter.successMessage')}</p>}
       </section>
     </main>
+    </>
   );
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
-
+import { Helmet } from "react-helmet";
 export default function Careers() {
   const { t } = useTranslation();
   const [submitted, setSubmitted] = useState(false);
@@ -29,6 +29,16 @@ export default function Careers() {
   }
 
   return (
+    <>
+    <Helmet>
+        <title>Careers - ReplySwiftDesk</title>
+        <meta
+          name="description"
+          content="Join the ReplySwiftDesk team. Explore open positions and opportunities to work in digital marketing, web development, and virtual assistance."
+        />
+      </Helmet>
+
+      <h1 className="sr-only">Careers - ReplySwiftDesk</h1>
     <main className="min-h-screen w-full bg-gradient-to-r from-[#0f1114] via-[#16191D] to-[#0f1114] flex flex-col items-center justify-start py-20 px-4">
       
       {/* BACK ARROW ONLY */}
@@ -147,5 +157,6 @@ export default function Careers() {
         </form>
       </div>
     </main>
+    </>
   );
 }

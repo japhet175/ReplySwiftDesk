@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 export default function About() {
   const { t } = useTranslation();
@@ -33,6 +34,17 @@ export default function About() {
   };
 
   return (
+  
+    <>
+    <Helmet>
+        <title>About Us - ReplySwiftDesk</title>
+        <meta
+          name="description"
+          content="Learn about ReplySwiftDesk, our mission, services, and why customers choose us for digital marketing, support, and web solutions."
+        />
+      </Helmet>
+
+      <h1 className="sr-only">About Us - ReplySwiftDesk</h1>
     <main className="pt-28 pb-20 bg-[#1B1F24] text-[#C0C0C0] min-h-screen w-full">
       {/* Back Arrow */}
       <div className="mb-6 px-6 max-w-7xl mx-auto text-left">
@@ -169,5 +181,6 @@ export default function About() {
         </Link>
       </section>
     </main>
+    </>
   );
 }

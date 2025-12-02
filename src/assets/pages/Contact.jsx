@@ -1,8 +1,18 @@
 import ContactForm from "../components/ContactForm";
 import { Mail, Phone } from "lucide-react";
-
+import { Helmet } from "react-helmet";
 export default function Contact() {
   return (
+    <>
+    <Helmet>
+        <title>Contact Us - ReplySwiftDesk</title>
+        <meta
+          name="description"
+          content="Get in touch with ReplySwiftDesk for inquiries, project quotes, or support. We are here to help your business grow online."
+        />
+      </Helmet>
+
+      <h1 className="sr-only">Contact Us - ReplySwiftDesk</h1>
     <main className="min-h-screen w-full bg-gradient-to-b from-[#1B1F24] via-[#16191D] to-[#1B1F24] flex flex-col items-center justify-start pt-28 pb-20 px-6 text-center">
       {/* Page Title */}
       <h1 className="text-4xl font-bold mb-6 text-[#C0C0C0]">
@@ -31,5 +41,6 @@ export default function Contact() {
         <ContactForm />
       </div>
     </main>
+    </>
   );
 }
