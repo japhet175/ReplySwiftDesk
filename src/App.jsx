@@ -11,18 +11,25 @@ import Portfolio from "./assets/pages/Portfolio";
 import Careers from "./assets/pages/Careers";
 
 function App() {
-
   useEffect(() => {
     // ------- Tawk.to live chat script -------
-    var Tawk_API = Tawk_API || {};
-    var Tawk_LoadStart = new Date();
+    if (!window.Tawk_API) {
+      window.Tawk_API = window.Tawk_API || {};
+      window.Tawk_LoadStart = new Date();
 
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = "https://embed.tawk.to/692a3a78b154901962a5263c/1jb6f8q4k";
-    script.charset = "UTF-8";
-    script.setAttribute("crossorigin", "*");
-    document.body.appendChild(script);
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = "https://embed.tawk.to/692a3a78b154901962a5263c/1jb6f8q4k";
+      script.charset = "UTF-8";
+      script.setAttribute("crossorigin", "*");
+
+      document.body.appendChild(script);
+
+      // Nettoyer le script quand le composant se démonte
+      return () => {
+        document.body.removeChild(script);
+      };
+    }
   }, []);
 
   return (
