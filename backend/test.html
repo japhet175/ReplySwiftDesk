@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Envoi Email - ReplySwiftDesk</title>
+</head>
+<body>
+  <h1>Test Email & Désabonnement - ReplySwiftDesk</h1>
+
+  <input id="email" type="email" placeholder="jkalumba422@gmail.com" required>
+  <br><br>
+  <textarea id="message" placeholder="Message" required></textarea>
+  <br><br>
+  <button id="send">Envoyer Email</button>
+  <button id="unsubscribe">Se Désabonner</button>
+
+  <p id="status"></p>
+
+  <script>
+    const status = document.getElementById('status');
+    const baseUrl = 'https://replyswiftdesk-backend.onrender.com';
+
+    // Fonction pour envoyer un email
+    async function sendEmail() {
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!email || !message) {
+        status.textContent = '❌ Veuillez remplir tous les champs';
+        return;
+      }
+
+      try {
+        const response = await fetch(`${baseUrl}/send-email`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, message })
+        });
+        const data = await response.json();
+        status.textContent = data.success 
+          ? '✅ Email envoyé avec succès' 
+          : '❌ ' + (data.error || 'Erreur inconnue');
+      } catch (err) {
+        status.textContent = '❌ Erreur: ' + err.message;
+      }
+    }
+
+    // Fonction pour se désabonner
+    async function unsubscribeEmail() {
+      const email = document.getElementById('email').value.trim();
+
+      if (!email) {
+        status.textContent = '❌ Veuillez entrer un email';
+        return;
+      }
+
+      try {
+        const response = await fetch(`${baseUrl}/unsubscribe?email=${encodeURIComponent(email)}`);
+        const text = await response.text();
+        status.innerHTML = text; // on utilise innerHTML pour afficher le HTML du serveur
+      } catch (err) {
+        status.textContent = '❌ Erreur: ' + err.message;
+      }
+    }
+
+    document.getElementById('send').addEventListener('click', sendEmail);
+    document.getElementById('unsubscribe').addEventListener('click', unsubscribeEmail);
+  </script>
+</body>
+</html>
