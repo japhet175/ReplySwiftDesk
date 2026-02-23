@@ -2,33 +2,123 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test Envoi Email - ReplySwiftDesk</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    button {
+      padding: 12px 24px;
+      margin: 10px 10px 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #send {
+      background: #1a73e8;
+      color: white;
+    }
+    #send:hover {
+      background: #1557b0;
+    }
+    #unsubscribe {
+      background: #dc3545;
+      color: white;
+    }
+    #unsubscribe:hover {
+      background: #bb2d3b;
+    }
+    #status {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      background: #e9ecef;
+      min-height: 50px;
+    }
+    .success { color: #28a745; }
+    .error { color: #dc3545; }
+  </style>
 </head>
 <body>
-  <h1>Test Email & Désabonnement - ReplySwiftDesk</h1>
+  <div class="container">
+    <h1>📧 Test Email - ReplySwiftDesk</h1>
+    
+    <input 
+      id="email" 
+      type="email" 
+      placeholder="votre@email.com" 
+      value="jkalumba422@gmail.com"
+      required
+    >
+    
+    <textarea 
+      id="message" 
+      placeholder="Votre message ici..." 
+      required
+    >Message de test</textarea>
+    
+    <div>
+      <button id="send">📤 Envoyer Email</button>
+      <button id="unsubscribe">🚫 Se Désabonner</button>
+    </div>
+    
+    <div id="status">
+      <p>Entrez un email et un message pour commencer...</p>
+    </div>
 
-  <input id="email" type="email" placeholder="jkalumba422@gmail.com" required>
-  <br><br>
-  <textarea id="message" placeholder="Message" required></textarea>
-  <br><br>
-  <button id="send">Envoyer Email</button>
-  <button id="unsubscribe">Se Désabonner</button>
-
-  <p id="status"></p>
+    <p style="margin-top: 20px; font-size: 12px; color: #666; text-align: center;">
+      Backend: https://replyswiftdesk-backend.onrender.com
+    </p>
+  </div>
 
   <script>
     const status = document.getElementById('status');
     const baseUrl = 'https://replyswiftdesk-backend.onrender.com';
 
-    // Fonction pour envoyer un email
+    function showStatus(message, isSuccess = true) {
+      status.innerHTML = `<p class="${isSuccess ? 'success' : 'error'}">${message}</p>`;
+    }
+
     async function sendEmail() {
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
 
       if (!email || !message) {
-        status.textContent = '❌ Veuillez remplir tous les champs';
+        showStatus('❌ Veuillez remplir tous les champs', false);
         return;
       }
+
+      showStatus('⏳ Envoi en cours...');
 
       try {
         const response = await fetch(`${baseUrl}/send-email`, {
@@ -36,30 +126,37 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, message })
         });
+        
         const data = await response.json();
-        status.textContent = data.success 
-          ? '✅ Email envoyé avec succès' 
-          : '❌ ' + (data.error || 'Erreur inconnue');
+        
+        if (data.success) {
+          showStatus('✅ Email envoyé avec succès ! Vérifiez votre boîte de réception.');
+        } else {
+          showStatus('❌ ' + (data.error || 'Erreur inconnue'), false);
+        }
       } catch (err) {
-        status.textContent = '❌ Erreur: ' + err.message;
+        showStatus('❌ Erreur réseau: ' + err.message, false);
       }
     }
 
-    // Fonction pour se désabonner
     async function unsubscribeEmail() {
       const email = document.getElementById('email').value.trim();
 
       if (!email) {
-        status.textContent = '❌ Veuillez entrer un email';
+        showStatus('❌ Veuillez entrer un email', false);
         return;
       }
+
+      showStatus('⏳ Désabonnement en cours...');
 
       try {
         const response = await fetch(`${baseUrl}/unsubscribe?email=${encodeURIComponent(email)}`);
         const text = await response.text();
-        status.innerHTML = text; // on utilise innerHTML pour afficher le HTML du serveur
+        
+        // Afficher la réponse HTML du serveur dans une iframe ou directement
+        status.innerHTML = text;
       } catch (err) {
-        status.textContent = '❌ Erreur: ' + err.message;
+        showStatus('❌ Erreur: ' + err.message, false);
       }
     }
 
