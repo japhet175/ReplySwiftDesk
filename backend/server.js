@@ -13,7 +13,8 @@ app.use(cors({
     "https://swiftreplydesk.site",
     "https://api.swiftreplydesk.site",
     "http://localhost:5000",
-    "http://localhost:5500"
+    "http://localhost:5500",
+    "http://localhost:8000"
   ],
   methods: ["GET", "POST"]
 }));
