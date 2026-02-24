@@ -1,311 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReplySwiftDesk - Professional Email Sending</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            width: 100%;
-            max-width: 500px;
-            padding: 40px;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            color: #333;
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-
-        .header h1 span {
-            color: #667eea;
-        }
-
-        .header p {
-            color: #666;
-            font-size: 1em;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .form-group label i {
-            color: #667eea;
-            margin-right: 5px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1em;
-            transition: all 0.3s;
-            background: #f9f9f9;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: #667eea;
-            background: white;
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .btn-send {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .btn-send:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-unsubscribe {
-            background: #f44336;
-            color: white;
-        }
-
-        .btn-unsubscribe:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(244, 67, 54, 0.4);
-        }
-
-        .status {
-            margin-top: 25px;
-            padding: 15px;
-            border-radius: 10px;
-            background: #f5f5f5;
-            border-left: 4px solid #667eea;
-            font-size: 0.95em;
-            min-height: 60px;
-        }
-
-        .status.success {
-            background: #d4edda;
-            border-left-color: #28a745;
-            color: #155724;
-        }
-
-        .status.error {
-            background: #f8d7da;
-            border-left-color: #dc3545;
-            color: #721c24;
-        }
-
-        .status.loading {
-            background: #fff3cd;
-            border-left-color: #ffc107;
-            color: #856404;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            color: #999;
-            font-size: 0.8em;
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 25px;
-            }
-            
-            .button-group {
-                flex-direction: column;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReplySwiftDesk - Email Builder</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background:#f4f6f9;
+  margin:0;
+  padding:40px;
+}
+.container {
+  max-width:900px;
+  margin:auto;
+  background:white;
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.08);
+}
+h1 { text-align:center; margin-bottom:30px; }
+input, textarea {
+  width:100%; padding:12px; margin:10px 0;
+  border:1px solid #ddd; border-radius:6px; font-size:15px;
+}
+textarea { min-height:150px; resize:vertical; }
+.buttons { margin-top:10px; }
+button {
+  padding:12px 20px; border:none; border-radius:6px;
+  font-size:14px; cursor:pointer; margin-right:10px;
+}
+#previewBtn { background:#6c757d; color:white; }
+#sendBtn { background:#1a73e8; color:white; }
+#sendBtn:hover { background:#1557b0; }
+#status {
+  margin-top:20px; padding:15px; border-radius:6px;
+  background:#f1f3f5; min-height:50px;
+}
+iframe {
+  width:100%; height:300px; border:1px solid #ddd;
+  border-radius:6px; margin-top:20px; background:white;
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Reply<span>Swift</span>Desk</h1>
-            <p>Send emails to your customers</p>
-        </div>
+<div class="container">
+<h1>📧 ReplySwiftDesk Email Builder</h1>
 
-        <!-- ✅ ENTER YOUR CLIENT'S EMAIL HERE -->
-        <div class="form-group">
-            <label for="email">
-                <i>📧</i> Client Email
-            </label>
-            <input type="email" class="form-control" id="email" 
-                   placeholder="client@email.com">
-            <small style="color: #999; display: block; margin-top: 5px;">
-                Enter your client's email address
-            </small>
-        </div>
+<label>Recipient Email</label>
+<input type="email" id="email" placeholder="client@email.com">
 
-        <div class="form-group">
-            <label for="message">
-                <i>💬</i> Message
-            </label>
-            <textarea class="form-control" id="message" 
-                      placeholder="Your message...">Hello,
-This is a personalized message for our client.
-Best regards,
-The ReplySwiftDesk Team</textarea>
-        </div>
+<label>Email HTML Content</label>
+<textarea id="editor">
+<h2>Hello,</h2>
+<p>This is a test email from ReplySwiftDesk.</p>
+</textarea>
 
-        <div class="button-group">
-            <button class="btn btn-send" id="sendBtn">
-                <span>📤</span> Send
-            </button>
-            <button class="btn btn-unsubscribe" id="unsubscribeBtn">
-                <span>🚫</span> Unsubscribe
-            </button>
-        </div>
+<div class="buttons">
+  <button id="previewBtn">👁 Preview</button>
+  <button id="sendBtn">📤 Send Email</button>
+</div>
 
-        <div class="status" id="status">
-            Ready to send
-        </div>
+<div id="status">Ready.</div>
 
-        <div class="footer">
-            <p>Backend: replyswiftdesk-backend.onrender.com</p>
-            <p>© 2026 ReplySwiftDesk - All rights reserved</p>
-        </div>
-    </div>
+<h3>Live Preview</h3>
+<iframe id="previewFrame"></iframe>
+</div>
 
-    <script>
-        const statusDiv = document.getElementById('status');
-        const sendBtn = document.getElementById('sendBtn');
-        const unsubscribeBtn = document.getElementById('unsubscribeBtn');
-        const emailInput = document.getElementById('email');
-        const messageInput = document.getElementById('message');
-        
-        const baseUrl = 'https://replyswiftdesk-backend.onrender.com';
+<script>
+const baseUrl = "https://replyswiftdesk.site"; // ✅ update to your backend domain
+const statusBox = document.getElementById("status");
+const sendBtn = document.getElementById("sendBtn");
 
-        function setStatus(message, type = 'info') {
-            statusDiv.textContent = message;
-            statusDiv.className = 'status ' + type;
-        }
+function signature(){
+  return `
+  <div style="margin-top:25px; font-size:14px; border-top:1px solid #ddd; padding-top:10px;">
+    <p>Best regards,<br>
+    <strong>SwiftReply Team</strong><br>
+    ReplySwiftDesk.site<br>
+    +250 798 980 113</p>
+  </div>`;
+}
 
-        async function sendEmail() {
-            const email = emailInput.value.trim();
-            const message = messageInput.value.trim();
+function unsubscribe(email){
+  return `
+  <div style="margin-top:15px; text-align:center;">
+    <a href="${baseUrl}/unsubscribe?email=${encodeURIComponent(email)}"
+       style="font-size:12px; color:#666; text-decoration:none;">
+       Unsubscribe
+    </a>
+  </div>`;
+}
 
-            if (!email || !message) {
-                setStatus('❌ Please fill in all fields', 'error');
-                return;
-            }
+function updatePreview(){
+  const html = document.getElementById("editor").value;
+  const email = document.getElementById("email").value || "test@email.com";
+  document.getElementById("previewFrame").srcdoc =
+    html + signature() + unsubscribe(email);
+}
 
-            if (!email.includes('@')) {
-                setStatus('❌ Invalid email format', 'error');
-                return;
-            }
+async function sendEmail(){
+  const email = document.getElementById("email").value.trim();
+  const html = document.getElementById("editor").value.trim();
 
-            setStatus('⏳ Sending...', 'loading');
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email) || !html) {
+    statusBox.innerHTML = "❌ Please enter a valid email and message.";
+    return;
+  }
 
-            try {
-                const response = await fetch(`${baseUrl}/send-email`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, message })
-                });
-                
-                const data = await response.json();
-                
-                if (data.success) {
-                    setStatus(`✅ Email sent to ${email}`, 'success');
-                    emailInput.value = ''; // Clear for next client
-                } else {
-                    setStatus('❌ ' + (data.error || 'Unknown error'), 'error');
-                }
-            } catch (err) {
-                setStatus('❌ Network error', 'error');
-            }
-        }
+  statusBox.innerHTML = "⏳ Sending...";
+  sendBtn.disabled = true;
 
-        async function unsubscribeEmail() {
-            const email = emailInput.value.trim();
+  try {
+    const response = await fetch(`${baseUrl}/send-email`, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        email: email,
+        message: html + signature() + unsubscribe(email)
+      })
+    });
 
-            if (!email) {
-                setStatus('❌ Please enter an email', 'error');
-                return;
-            }
+    const data = await response.json();
+    if (data.success) {
+      statusBox.innerHTML = "✅ Email sent successfully!";
+    } else {
+      statusBox.innerHTML = "❌ " + (data.error || "Unknown error");
+    }
+  } catch (err) {
+    statusBox.innerHTML = "❌ Network error.";
+  } finally {
+    sendBtn.disabled = false;
+  }
+}
 
-            setStatus('⏳ Unsubscribing...', 'loading');
-
-            try {
-                const response = await fetch(`${baseUrl}/unsubscribe?email=${encodeURIComponent(email)}`);
-                
-                if (response.ok) {
-                    setStatus(`✅ ${email} unsubscribed`, 'success');
-                    emailInput.value = '';
-                } else {
-                    setStatus('❌ Unsubscribe failed', 'error');
-                }
-            } catch (err) {
-                setStatus('❌ Network error', 'error');
-            }
-        }
-
-        sendBtn.addEventListener('click', sendEmail);
-        unsubscribeBtn.addEventListener('click', unsubscribeEmail);
-
-        // Enter key support
-        emailInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendEmail();
-            }
-        });
-    </script>
+document.getElementById("previewBtn").addEventListener("click", updatePreview);
+sendBtn.addEventListener("click", sendEmail);
+</script>
 </body>
 </html>
