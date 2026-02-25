@@ -7,7 +7,7 @@ const validator = require('validator');
 
 const app = express();
 
-// ===== CORS COMPLET =====
+// ===== CORS =====
 app.use(cors({
   origin: [
     "https://replyswiftdesk.site",
@@ -20,13 +20,10 @@ app.use(cors({
   ],
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-  optionsSuccessStatus: 200
+  credentials: true
 }));
 
-// Gérer les requêtes OPTIONS (preflight) explicitement
 app.options('*', cors());
-
 app.use(express.json());
 
 // ===== MongoDB Atlas =====
@@ -85,7 +82,9 @@ app.get('/unsubscribe', async (req, res) => {
 // ===== POST /send-email =====
 app.post('/send-email', async (req, res) => {
   try {
-    const { email, message } = req.body;
+    let { email, message } = req.body;
+
+    // Validation
     if (!email || !validator.isEmail(email)) {
       return res.status(400).json({ success: false, error: 'Invalid email address' });
     }
@@ -95,6 +94,7 @@ app.post('/send-email', async (req, res) => {
 
     const normalizedEmail = validator.normalizeEmail(email);
 
+    // Vérifie si l'utilisateur est inscrit ou non
     let client = await Client.findOneAndUpdate(
       { email: normalizedEmail },
       { $setOnInsert: { subscribed: true } },
@@ -105,58 +105,45 @@ app.post('/send-email', async (req, res) => {
       return res.status(403).json({ success: false, error: 'User unsubscribed' });
     }
 
+    // URL unsubscribe
     const unsubscribeUrl = `${process.env.BASE_URL}/unsubscribe?email=${encodeURIComponent(normalizedEmail)}`;
-    
+
+    // ✅ Construire le HTML correctement (évite le rendu en texte brut)
     const htmlContent = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <p>${validator.escape(message)}</p>
-        <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;" />
-        <p style="text-align: center;">
+      <div style="font-family: Arial, sans-serif; max-width:600px; margin:0 auto;">
+        <div style="padding:20px;">
+          ${message}  <!-- ici ton message HTML -->
+        </div>
+        <hr style="margin:20px 0; border:none; border-top:1px solid #eee;" />
+        <div style="text-align:center; font-size:10px; color:#999;">
           <a href="${unsubscribeUrl}" 
-             style="display:inline-block;padding:10px 20px;background-color:#1a73e8;color:white;text-decoration:none;border-radius:5px;">
-            Unsubscribe
+             style="color:#999; text-decoration:none;">
+             Unsubscribe
           </a>
-        </p>
-        <p style="color: #666; font-size: 12px; text-align: center;">
-          If you no longer wish to receive our emails, click the link above.
-        </p>
+        </div>
+        <div style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
+          SwiftReply Team<br>
+          ReplySwiftDesk.site | +250 798 980 113
+        </div>
       </div>
     `;
 
-    const { data, error } = await resend.emails.send({
+    // ===== Envoi via Resend =====
+    const response = await resend.emails.send({
       from: process.env.FROM_EMAIL,
       to: [normalizedEmail],
       subject: "Latest News from ReplySwiftDesk",
-      html: htmlContent,
-      text: `${message}\n\nTo unsubscribe: ${unsubscribeUrl}`
+      html: htmlContent,      // ✅ HTML pour rendu correct
+      text: `${message}\n\nTo unsubscribe: ${unsubscribeUrl}` // fallback texte
     });
 
-    if (error) {
-      console.error('❌ Resend error:', error);
-      return res.status(500).json({ success: false, error: error.message });
-    }
+    console.log(`✅ Email sent via Resend: ${response.data?.id || 'no id'}`);
 
-    console.log(`✅ Email sent via Resend: ${data?.id}`);
-    
-    // Ajouter des en-têtes CORS explicites pour cette route
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
-    res.header('Access-Control-Allow-Credentials', 'true');
     res.json({ success: true, message: '✅ Email sent successfully' });
-
   } catch (err) {
     console.error('❌ Email send error:', err);
     res.status(500).json({ success: false, error: err.message || 'Error while sending email' });
   }
-});
-
-// ===== Route de test CORS =====
-app.get('/test-cors', (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.json({ 
-    success: true, 
-    message: 'CORS is configured correctly!',
-    origin: req.headers.origin || 'No origin'
-  });
 });
 
 // ===== Root Route =====

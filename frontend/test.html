@@ -2,141 +2,150 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ReplySwiftDesk - Email Builder</title>
+<title>ReplySwiftDesk - Test Email</title>
 <style>
 body {
   font-family: Arial, sans-serif;
-  background:#f4f6f9;
-  margin:0;
-  padding:40px;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #f5f5f5;
 }
 .container {
-  max-width:900px;
-  margin:auto;
-  background:white;
-  padding:30px;
-  border-radius:12px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.08);
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
-h1 { text-align:center; margin-bottom:30px; }
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 input, textarea {
-  width:100%; padding:12px; margin:10px 0;
-  border:1px solid #ddd; border-radius:6px; font-size:15px;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 15px;
+  box-sizing: border-box;
 }
-textarea { min-height:150px; resize:vertical; }
-.buttons { margin-top:10px; }
+textarea {
+  min-height: 200px;
+  resize: vertical;
+}
 button {
-  padding:12px 20px; border:none; border-radius:6px;
-  font-size:14px; cursor:pointer; margin-right:10px;
+  background: #1a73e8;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
 }
-#previewBtn { background:#6c757d; color:white; }
-#sendBtn { background:#1a73e8; color:white; }
-#sendBtn:hover { background:#1557b0; }
+button:hover {
+  background: #1557b0;
+}
 #status {
-  margin-top:20px; padding:15px; border-radius:6px;
-  background:#f1f3f5; min-height:50px;
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  background: #e9ecef;
+  min-height: 40px;
+  font-size: 14px;
+  text-align: center;
 }
-iframe {
-  width:100%; height:300px; border:1px solid #ddd;
-  border-radius:6px; margin-top:20px; background:white;
-}
+.success { color: #28a745; font-weight: bold; }
+.error { color: #dc3545; font-weight: bold; }
+.info { color: #333; }
 </style>
 </head>
 <body>
 <div class="container">
-<h1>📧 ReplySwiftDesk Email Builder</h1>
-
-<label>Recipient Email</label>
-<input type="email" id="email" placeholder="client@email.com">
-
-<label>Email HTML Content</label>
-<textarea id="editor">
-<h2>Hello,</h2>
+  <h1>📧 ReplySwiftDesk</h1>
+  
+  <input id="email" type="email" placeholder="Client Email" value="japhymushota@gmail.com">
+  
+  <textarea id="message" placeholder="Paste your message here...">
+<h2>Hello!</h2>
 <p>This is a test email from ReplySwiftDesk.</p>
-</textarea>
-
-<div class="buttons">
-  <button id="previewBtn">👁 Preview</button>
-  <button id="sendBtn">📤 Send Email</button>
-</div>
-
-<div id="status">Ready.</div>
-
-<h3>Live Preview</h3>
-<iframe id="previewFrame"></iframe>
+  </textarea>
+  
+  <button id="send">📤 Send Email</button>
+  
+  <div id="status" class="info">Ready to send</div>
 </div>
 
 <script>
-const baseUrl = "https://replyswiftdesk.site"; // ✅ update to your backend domain
-const statusBox = document.getElementById("status");
-const sendBtn = document.getElementById("sendBtn");
+const status = document.getElementById('status');
+const sendBtn = document.getElementById('send');
+const baseUrl = 'https://replyswiftdesk-backend.onrender.com'; // Backend URL
 
-function signature(){
-  return `
-  <div style="margin-top:25px; font-size:14px; border-top:1px solid #ddd; padding-top:10px;">
-    <p>Best regards,<br>
-    <strong>SwiftReply Team</strong><br>
-    ReplySwiftDesk.site<br>
-    +250 798 980 113</p>
-  </div>`;
+function showStatus(msg, type='info'){
+  status.innerHTML = msg;
+  status.className = type;
 }
 
-function unsubscribe(email){
-  return `
-  <div style="margin-top:15px; text-align:center;">
-    <a href="${baseUrl}/unsubscribe?email=${encodeURIComponent(email)}"
-       style="font-size:12px; color:#666; text-decoration:none;">
-       Unsubscribe
-    </a>
-  </div>`;
+function isValidEmail(email){
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
 }
 
-function updatePreview(){
-  const html = document.getElementById("editor").value;
-  const email = document.getElementById("email").value || "test@email.com";
-  document.getElementById("previewFrame").srcdoc =
-    html + signature() + unsubscribe(email);
+// Ajouter signature + unsubscribe discret
+function enrichMessage(message, email){
+  const unsubscribe = `
+    <div style="margin-top:20px; font-size:10px; text-align:center; color:#999;">
+      <a href="${baseUrl}/unsubscribe?email=${encodeURIComponent(email)}" 
+         style="color:#999; text-decoration:none;">Unsubscribe</a>
+    </div>`;
+  const signature = `
+    <div style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
+      SwiftReply Team<br>
+      ReplySwiftDesk.site | +250 798 980 113
+    </div>`;
+  return message + signature + unsubscribe;
 }
 
 async function sendEmail(){
-  const email = document.getElementById("email").value.trim();
-  const html = document.getElementById("editor").value.trim();
+  const email = document.getElementById('email').value.trim();
+  let message = document.getElementById('message').value.trim();
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailRegex.test(email) || !html) {
-    statusBox.innerHTML = "❌ Please enter a valid email and message.";
+  if(!email || !message){
+    showStatus('❌ Email and message required', 'error');
+    return;
+  }
+  if(!isValidEmail(email)){
+    showStatus('❌ Invalid email format', 'error');
     return;
   }
 
-  statusBox.innerHTML = "⏳ Sending...";
+  message = enrichMessage(message, email);
+
+  showStatus('⏳ Sending...', 'info');
   sendBtn.disabled = true;
 
-  try {
-    const response = await fetch(`${baseUrl}/send-email`, {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({
-        email: email,
-        message: html + signature() + unsubscribe(email)
-      })
+  try{
+    const response = await fetch(`${baseUrl}/send-email`,{
+      method: 'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({email, message})
     });
 
     const data = await response.json();
-    if (data.success) {
-      statusBox.innerHTML = "✅ Email sent successfully!";
+    if(data.success){
+      showStatus('✅ Email sent successfully!', 'success');
     } else {
-      statusBox.innerHTML = "❌ " + (data.error || "Unknown error");
+      showStatus('❌ ' + (data.error || 'Error'), 'error');
     }
-  } catch (err) {
-    statusBox.innerHTML = "❌ Network error.";
-  } finally {
+  }catch(err){
+    showStatus('❌ Network error', 'error');
+  }finally{
     sendBtn.disabled = false;
   }
 }
 
-document.getElementById("previewBtn").addEventListener("click", updatePreview);
-sendBtn.addEventListener("click", sendEmail);
+sendBtn.addEventListener('click', sendEmail);
 </script>
 </body>
 </html>
